@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/root_landmark_detail"
+                tools:context="com.example.lmohamed.recyclerview.view.PersonDetailActivity">
+
+    <View
+        android:id="@+id/detail_landmark_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/div_center"
+        />
+
+    <TextView
+        style="@style/Text.Primary"
+        android:id="@+id/detail_landmark_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/detail_landmark_address"
+        android:layout_below="@+id/div_center"
+        android:padding="16dp"
+
+        tools:text="Hagia Sophia"
+        />
+
+    <View
+        style="@style/Text.Primary"
+        android:id="@+id/div_center"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerVertical="true"
+
+        />
+
+    <TextView
+        android:id="@+id/detail_landmark_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/div_center"
+        android:padding="16dp"
+
+        tools:text="Istanbul, Turkey"
+        />
+
+    <TextView
+        android:id="@+id/detail_landmark_latlong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_landmark_address"
+        android:padding="16dp"
+
+        tools:text="0.00000 - 0.00000"
+        />
+
+    <TextView
+        android:id="@+id/detail_landmark_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/detail_landmark_latlong"
+        android:padding="16dp"
+
+        tools:text="Agamemnon@kingofkings.royal"
+        />
+
+
+</RelativeLayout>

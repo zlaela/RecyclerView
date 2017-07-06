@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">RecyclerView</string>
+
+    <string name="item_name">Name: </string>
+    <string name="item_address">Address: </string>
+    <string name="item_phone_number">Phone Number: </string>
+    <string name="item_lat_long">Lat/Long: </string>
+    <string name="item_email">Email: </string>
+    <string name="item_date">Date: </string>
+    <string name="item_notes">Notes: </string>
+
+
+    <string name="name_hint">Enter Name </string>
+    <string name="address_hint">Enter Address </string>
+    <string name="phone_number_hint">Enter Number</string>
+    <string name="lat_long_hint">Populated Automatically </string>
+    <string name="date_hint">Tap to Edit</string>
+    <string name="notes_hint">Enter Notes </string>
+    <string name="email_hint">Enter Email</string>
+</resources>
