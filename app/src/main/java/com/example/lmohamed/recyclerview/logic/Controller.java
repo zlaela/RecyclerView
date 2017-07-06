@@ -3,6 +3,7 @@ package com.example.lmohamed.recyclerview.logic;
 import com.example.lmohamed.recyclerview.data.BusinessListItem;
 import com.example.lmohamed.recyclerview.data.DataSourceInterface;
 import com.example.lmohamed.recyclerview.data.LandmarkListItem;
+import com.example.lmohamed.recyclerview.data.PersonListItem;
 import com.example.lmohamed.recyclerview.view.ViewInterface;
 import com.example.lmohamed.recyclerview.data.ListItem;
 
@@ -58,7 +59,7 @@ public class Controller {
                 );
                 return;
         }
-        if (selectedItem instanceof LandmarkListItem){
+        if (selectedItem instanceof PersonListItem){
             view.startPersonDetailActivity(
 
                    /*, selectedItem.getId() */
