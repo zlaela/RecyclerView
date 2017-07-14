@@ -2,4 +2,6 @@
 <resources>
     <dimen name="narrow">8dp</dimen>
     <dimen name="medium">16dp</dimen>
+    <dimen name="fab">20dp</dimen>
+
 </resources>

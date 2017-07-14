@@ -36,44 +36,15 @@ public class Controller {
 
     public void onListItemClick(ListItem selectedItem){
 
-        if (selectedItem instanceof BusinessListItem) {
-            view.startBusinessDetailActivity(
-                   /*, selectedItem.getId() */
+        view.startDetailActivity(
 
-                    selectedItem.getName(),
-                    selectedItem.getAddress(),
-                    selectedItem.getPhone(),
-                    selectedItem.getColorImage()
-                );
-                return;
-        }
-        if (selectedItem instanceof LandmarkListItem){
-            view.startLandmarkDetailActivity(
-
-                   /*, selectedItem.getId() */
-                    selectedItem.getName(),
-                    selectedItem.getAddress(),
-                    selectedItem.getLatLong(),
-                    selectedItem.getEmail(),
-                    selectedItem.getColorImage()
-                );
-                return;
-        }
-        if (selectedItem instanceof PersonListItem){
-            view.startPersonDetailActivity(
-
-                   /*, selectedItem.getId() */
-
-                    selectedItem.getName(),
-                    selectedItem.getAddress(),
-                    selectedItem.getColorImage()
-                    );
-                    return;
-        }
-        else{
-            return;
-        }
-
+                selectedItem.getName(),
+                selectedItem.getAddress(),
+                selectedItem.getLatLong(),
+                selectedItem.getEmail(),
+                selectedItem.getPhone(),
+                selectedItem.getColorImage()
+        );
     }
 
     /**

@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
+    android:id="@+id/activity_item"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.example.lmohamed.recyclerview.view.ListActivity">
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_item_detail"/>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_list_activity"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/action_button"
@@ -28,4 +23,4 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

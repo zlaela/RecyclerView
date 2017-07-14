@@ -11,9 +11,7 @@ import com.example.lmohamed.recyclerview.data.ListItem;
 
 public interface ViewInterface {
 
-    void startBusinessDetailActivity(String name, String address, String phone, int colorResource);
-    void startLandmarkDetailActivity(String name, String address, String latlong, String email, int colorResource);
-    void startPersonDetailActivity(String name, String address, int colorResource);
+    void startDetailActivity(String name, String address, String phone, String latlong, String email, int colorResource);
 
    /* void startBusinessDetailActivity(UUID itemId);
     void startLandmarkDetailActivity(UUID itemId);

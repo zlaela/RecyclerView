@@ -17,9 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.BusinessDetailActivity" />
-        <activity android:name=".view.LandmarkDetailActivity" />
-        <activity android:name=".view.PersonDetailActivity" />
+        <activity android:name=".view.ItemDetail" />
 
     </application>
 

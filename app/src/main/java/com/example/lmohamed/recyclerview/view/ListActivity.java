@@ -7,8 +7,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
-import java.util.UUID;
 
 import com.example.lmohamed.recyclerview.data.FakeDataSource;
 import com.example.lmohamed.recyclerview.data.LandmarkListItem;
@@ -26,12 +23,10 @@ import com.example.lmohamed.recyclerview.data.ListItem;
 import com.example.lmohamed.recyclerview.logic.Controller;
 
 /**
- * 1.
  * List Activity is responsible for
  * - Coordinating the User Interface
  * - Relaying Click events to the Controller
  * - Starting a Detail Activity
- * -
  */
 public class ListActivity extends AppCompatActivity implements ViewInterface {
 
@@ -75,53 +70,19 @@ public class ListActivity extends AppCompatActivity implements ViewInterface {
 
     /** Launch each list item's DetailActivity **/
     @Override
-    public void startBusinessDetailActivity(String itemName, String itemAddress, String itemPhone, int colorResource) {
-
-        Intent i = new Intent(this, PersonDetailActivity.class);
-
-    /*public void startBusinessDetailActivity(UUID itemId){
-        Intent i = new Intent(this, PersonDetailActivity.class);
-        i.putExtra(EXTRA_ITEM_ID, itemId);*/
+    public void startDetailActivity(String itemName, String itemAddress, String itemPhone, String itemLatLong, String itemEmail, int colorResource){
+        Intent i = new Intent(this, ItemDetail.class);
 
         i.putExtra(EXTRA_ITEM_NAME, itemName);
         i.putExtra(EXTRA_ITEM_ADDRESS, itemAddress);
         i.putExtra(EXTRA_ITEM_PHONE, itemPhone);
-        i.putExtra(EXTRA_COLOR, colorResource);
-
-        startActivity(i);
-    }
-    @Override
-    public void startLandmarkDetailActivity(String itemName, String itemAddress, String itemLatLong, String itemEmail, int colorResource) {
-
-        Intent i = new Intent(this, PersonDetailActivity.class);
-
-    /*public void startLandmarkDetailActivity(UUID itemId){
-        Intent i = new Intent(this, PersonDetailActivity.class);
-        i.putExtra(EXTRA_ITEM_ID, itemId); */
-
-        i.putExtra(EXTRA_ITEM_NAME, itemName);
-        i.putExtra(EXTRA_ITEM_ADDRESS, itemAddress);
         i.putExtra(EXTRA_ITEM_EMAIL, itemEmail);
         i.putExtra(EXTRA_ITEM_LATLONG, itemLatLong);
         i.putExtra(EXTRA_COLOR, colorResource);
 
         startActivity(i);
     }
-    @Override
-    public void startPersonDetailActivity(String itemName, String itemAddress, int colorResource) {
 
-        Intent i = new Intent(this, PersonDetailActivity.class);
-
-    /*public void startPersonDetailActivity(UUID itemId) {
-        Intent i = new Intent(this, PersonDetailActivity.class);
-        i.putExtra(EXTRA_ITEM_ID, itemId); */
-
-        i.putExtra(EXTRA_ITEM_NAME, itemName);
-        i.putExtra(EXTRA_ITEM_ADDRESS, itemAddress);
-        i.putExtra(EXTRA_COLOR, colorResource);
-
-        startActivity(i);
-    }
     /**
      * In order to make sure things execute in the proper order, we have our Controller tell the
      * View when to set up it's stuff.
@@ -164,21 +125,23 @@ public class ListActivity extends AppCompatActivity implements ViewInterface {
 
             RecyclerView.ViewHolder viewHolder;
 
+            View itemView = layoutInflater.inflate(R.layout.item_list_card, viewGroup, false);
+
             switch (viewType){
                 case BUSINESS:
-                    // inflate the business layout
-                    View businessView = layoutInflater.inflate(R.layout.item_business, viewGroup, false);
-                    viewHolder = new BusinessViewHolder(businessView);
+                    // attach business items
+                    View businessImage = layoutInflater.inflate(R.layout.item_list_card, viewGroup, false);
+                    viewHolder = new BusinessViewHolder(itemView);
                     break;
                 case LANDMARK:
                     // inflate the landmark layout
-                    View landmarkView = layoutInflater.inflate(R.layout.item_landmark, viewGroup, false);
-                    viewHolder = new LandmarkViewHolder(landmarkView);
+                    View landmarkView = layoutInflater.inflate(R.layout.item_list_card, viewGroup, false);
+                    viewHolder = new LandmarkViewHolder(itemView);
                     break;
                 case PERSON:
                     // inflate the person layout
-                    View personView = layoutInflater.inflate(R.layout.item_person, viewGroup, false);
-                    viewHolder = new PersonViewHolder(personView);
+                    View personView  = layoutInflater.inflate(R.layout.item_list_card, viewGroup, false);
+                    viewHolder = new PersonViewHolder(itemView);
                     break;
                 default:
                     View defaultView = layoutInflater.inflate(R.layout.item_default, viewGroup, false);
@@ -261,7 +224,11 @@ public class ListActivity extends AppCompatActivity implements ViewInterface {
                 this.address = (TextView) itemView.findViewById(R.id.list_business_address);
                 this.phone = (TextView) itemView.findViewById(R.id.list_business_phone);
 
-                this.container = (ViewGroup) itemView.findViewById(R.id.root_business_item);
+                this.image.setVisibility(View.VISIBLE);
+                this.name.setVisibility(View.VISIBLE);
+                this.phone.setVisibility(View.VISIBLE);
+
+                this.container = (ViewGroup) itemView.findViewById(R.id.item_card);
                 /*
                 We can pass "this" as an Argument, because "this", which refers to the Current
                 Instance of type CustomViewHolder currently conforms to (implements) the
@@ -302,7 +269,13 @@ public class ListActivity extends AppCompatActivity implements ViewInterface {
                 this.latlong = (TextView) itemView.findViewById(R.id.list_landmark_latlong);
                 this.email = (TextView) itemView.findViewById(R.id.list_landmark_email);
 
-                this.container = (ViewGroup) itemView.findViewById(R.id.root_landmark_item);
+                this.image.setVisibility(View.VISIBLE);
+                this.name.setVisibility(View.VISIBLE);
+                this.address.setVisibility(View.VISIBLE);
+                this.latlong.setVisibility(View.VISIBLE);
+                this.email.setVisibility(View.VISIBLE);
+
+                this.container = (ViewGroup) itemView.findViewById(R.id.item_card);
 
                 this.container.setOnClickListener(this);
             }
@@ -333,7 +306,11 @@ public class ListActivity extends AppCompatActivity implements ViewInterface {
                 this.name = (TextView) itemView.findViewById(R.id.list_person_name);
                 this.address = (TextView) itemView.findViewById(R.id.list_person_address);
 
-                this.container = (ViewGroup) itemView.findViewById(R.id.root_person_item);
+                this.image.setVisibility(View.VISIBLE);
+                this.name.setVisibility(View.VISIBLE);
+                this.address.setVisibility(View.VISIBLE);
+
+                this.container = (ViewGroup) itemView.findViewById(R.id.item_card);
 
                 this.container.setOnClickListener(this);
             }
